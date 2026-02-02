@@ -1,0 +1,43 @@
+{
+  "name": "x413-nft",
+  "version": "1.0.0",
+  "description": "X413 NFT - Breaking Web2 413 Error Limits with Blockchain Technology",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:testnet": "hardhat run scripts/deploy.js --network bscTestnet",
+    "deploy:mainnet": "hardhat run scripts/deploy.js --network bsc",
+    "verify": "hardhat verify",
+    "test": "hardhat test",
+    "clean": "hardhat clean"
+  },
+  "keywords": [
+    "nft",
+    "blockchain",
+    "web3",
+    "bsc",
+    "ethereum",
+    "x402",
+    "gasless"
+  ],
+  "author": "X413 Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.2.1",
+    "@nomiclabs/hardhat-etherscan": "^3.1.0",
+    "hardhat": "^2.17.1",
+    "ethers": "^5.7.2"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.9.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/x413-nft.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/x413-nft/issues"
+  },
+  "homepage": "https://github.com/yourusername/x413-nft#readme"
+}
+
