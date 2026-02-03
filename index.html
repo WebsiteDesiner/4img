@@ -930,7 +930,7 @@
                 <div class="stat-label">Minted</div>
             </div>
             <div class="stat-item">
-                <div class="stat-value">10,000</div>
+                <div class="stat-value">1000</div>
                 <div class="stat-label">Max Supply</div>
             </div>
             <div class="stat-item">
@@ -1285,7 +1285,7 @@
                 const userBalance = await nftContract.methods.balanceOf(account).call();
                 
                 document.getElementById('totalMinted').textContent = totalSupply;
-                document.getElementById('mintProgress').textContent = totalSupply + '/10000';
+                document.getElementById('mintProgress').textContent = totalSupply + '/1000';
                 document.getElementById('userNFTs').textContent = userBalance;
                 document.getElementById('yourNFTs').textContent = userBalance;
             } catch (e) {
