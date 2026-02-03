@@ -7,10 +7,10 @@
 ### Unlock Unlimited Possibilities with NFT-Powered Passive Income
 
 [![BSC](https://img.shields.io/badge/Network-BSC-yellow)](https://bscscan.com/)
-[![NFT](https://img.shields.io/badge/Type-ERC721-blue)](https://element.market/collections/4IMG)
+[![NFT](https://img.shields.io/badge/Type-ERC721-blue)](https://element.market/collections/4img-3?search[toggles][0]=ALL)
 [![License](https://img.shields.io/badge/License-MIT-green)](./LICENSE)
 
-[🌐 Website](https://4img.io) | [🐦 Twitter](https://x.com/4IMGBSC) | [🛒 Element Market](https://element.market/collections/4IMG)
+[🌐 Website](4imgbsc.vip) | [🐦 Twitter](https://x.com/4IMGBSC) | [🛒 Element Market](https://element.market/collections/4img-3?search[toggles][0]=ALL)
 
 </div>
 
@@ -125,7 +125,7 @@ Distribution: Every 30 minutes
 | Platform | Link |
 |----------|------|
 | 🐦 Twitter | [x.com/4IMGBSC](https://x.com/4IMGBSC) |
-| 🛒 Element Market | [4IMG Collection](https://element.market/collections/4IMG) |
+| 🛒 Element Market | [4IMG Collection](https://element.market/collections/4img-3?search[toggles][0]=ALL) |
 | 📊 BSCScan | [NFT Contract](https://bscscan.com/address/0xeccb134d5018280758080286e21786300136118d) |
 
 ---
