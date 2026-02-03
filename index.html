@@ -3,15 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4GIRL - Breaking Web2 Limits NFT</title>
+    <title>4IMG Protocol</title>
     
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="./5.png">
-    <link rel="shortcut icon" type="image/png" href="./5.png">
-    <link rel="apple-touch-icon" href="./5.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./5.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./5.png">
-    <meta name="msapplication-TileImage" content="./5.png">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -21,1964 +16,1400 @@
         }
 
         :root {
-            --primary-red: #FF073A;
-            --primary-blue: #00D4FF;
-            --dark-bg: #0A0A0A;
-            --card-bg: #1A1A1A;
-            --text-primary: #FFFFFF;
-            --text-secondary: #888888;
-            --border-color: #333333;
-            --success-green: #00FF88;
-            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-3: linear-gradient(135deg, #00D4FF 0%, #FF073A 100%);
+            --bg-primary: #0c0c0c;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --bg-elevated: #222222;
+            --border: #2a2a2a;
+            --border-hover: #3a3a3a;
+            --text-primary: #fafafa;
+            --text-secondary: #a1a1a1;
+            --text-muted: #666666;
+            --accent: #f59e0b;
+            --accent-dim: rgba(245, 158, 11, 0.1);
+            --accent-glow: rgba(245, 158, 11, 0.15);
+            --success: #22c55e;
+            --error: #ef4444;
         }
 
         body {
-            font-family: 'Courier New', monospace;
-            background: var(--dark-bg);
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Matrix Rain Background */
-        .matrix-bg {
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            opacity: 0.015;
             pointer-events: none;
-            opacity: 0.03;
-            z-index: 0;
-            overflow: hidden;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            z-index: 1000;
         }
 
-        .matrix-bg::before {
-            content: '413 ERROR BROKEN 413 ERROR BROKEN 413 ERROR BROKEN';
-            position: absolute;
-            font-size: 20px;
-            color: var(--success-green);
-            white-space: nowrap;
-            animation: matrix-scroll 20s linear infinite;
-        }
-
-        @keyframes matrix-scroll {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
-        }
-
-        /* Navbar */
         .navbar {
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 2px solid var(--primary-red);
-            box-shadow: 0 4px 20px rgba(255, 7, 58, 0.3);
+            background: rgba(12, 12, 12, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover {
+            background: var(--bg-elevated);
+            border-color: var(--border-hover);
+        }
+
+        .nav-link img {
+            width: 18px;
+            height: 18px;
+            opacity: 0.7;
+        }
+
+        .connect-btn {
+            height: 44px;
+            padding: 0 20px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .connect-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .connect-btn.connected {
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--accent-dim);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--accent);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(40px, 8vw, 64px);
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 48px 0;
+        }
+
+        .stat-item {
+            background: var(--bg-secondary);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .section {
+            margin-bottom: 64px;
+        }
+
+        .section-header {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        .dividend-dashboard {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .dashboard-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        
-        .logo a:hover {
-            transform: scale(1.1);
-            transition: transform 0.2s ease;
-        }
-        
-        .footer a:hover {
-            transform: scale(1.05);
-            transition: transform 0.2s ease;
-        }
-
-        .error-code {
-            color: var(--primary-red);
-            font-size: 2rem;
-            text-shadow: 0 0 20px var(--primary-red);
-            animation: glitch-flicker 2s infinite;
-        }
-
-        @keyframes glitch-flicker {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-
-        .breaker {
-            color: var(--primary-blue);
-            font-size: 1.2rem;
-            letter-spacing: 0.3rem;
-        }
-
-        .connect-btn {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border: 1px solid rgba(255, 7, 58, 0.3);
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            color: white;
+        .dashboard-title {
+            font-size: 18px;
             font-weight: 600;
-            cursor: pointer;
+        }
+
+        .timer-badge {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-            position: relative;
-            overflow: hidden;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--bg-card);
+            border-radius: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
         }
 
-        .connect-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-3);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .connect-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 7, 58, 0.4);
-            border-color: rgba(255, 7, 58, 0.6);
-        }
-
-        .connect-btn:hover::before {
-            opacity: 1;
-        }
-
-        .connect-btn span {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-        }
-
-        /* Glitch Effect */
-        .glitch {
-            font-size: 4rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            color: var(--text-primary);
-            letter-spacing: 5px;
-            animation: glitch-skew 1s infinite linear alternate-reverse;
-        }
-
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .glitch::before {
-            animation: glitch-1 0.2s infinite;
-            color: var(--primary-blue);
-            z-index: -1;
-        }
-
-        .glitch::after {
-            animation: glitch-2 0.2s infinite;
-            color: var(--primary-red);
-            z-index: -2;
-        }
-
-        @keyframes glitch-1 {
-            0%, 100% { clip-path: inset(0 0 0 0); }
-            25% { clip-path: inset(20% 0 50% 0); transform: translateX(-2px); }
-            50% { clip-path: inset(60% 0 20% 0); transform: translateX(2px); }
-            75% { clip-path: inset(10% 0 80% 0); transform: translateX(-1px); }
-        }
-
-        @keyframes glitch-2 {
-            0%, 100% { clip-path: inset(0 0 0 0); }
-            25% { clip-path: inset(80% 0 10% 0); transform: translateX(2px); }
-            50% { clip-path: inset(20% 0 60% 0); transform: translateX(-2px); }
-            75% { clip-path: inset(50% 0 30% 0); transform: translateX(1px); }
-        }
-
-        @keyframes glitch-skew {
-            0%, 100% { transform: skew(0deg); }
-            50% { transform: skew(-1deg); }
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-top: 1rem;
-        }
-
-        /* Error Display Boxes */
-        .error-display {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .error-box, .success-box {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2rem;
-            width: 300px;
-            transition: all 0.3s;
-        }
-
-        .error-box {
-            border-color: var(--primary-red);
-        }
-
-        .error-box:hover {
-            box-shadow: 0 0 30px rgba(255, 7, 58, 0.4);
-            transform: scale(1.05);
-        }
-
-        .success-box {
-            border-color: var(--success-green);
-        }
-
-        .success-box:hover {
-            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
-            transform: scale(1.05);
-        }
-
-        .arrow {
-            font-size: 2rem;
-            color: var(--text-secondary);
+        .timer-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(10px); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        /* NFT Section */
-        .mint-section {
-            margin-top: 4rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .gradient-text {
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .beta-tag {
-            font-size: 0.8rem;
-            background: var(--primary-blue);
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            vertical-align: super;
-            margin-left: 0.5rem;
-        }
-
-        .mint-container {
+        .dashboard-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--border);
         }
 
-        /* NFT Card */
-        .nft-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.3s;
-            max-width: 350px;
-            margin: 0 auto;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        .dashboard-card {
+            background: var(--bg-secondary);
+            padding: 28px;
         }
 
-        .nft-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.4);
+        .dashboard-card.highlight {
+            background: var(--accent-dim);
         }
 
-        .nft-image-container {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            background: #000;
-            overflow: hidden;
-        }
-
-        .nft-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .nft-card:hover .nft-image-container img {
-            transform: scale(1.05);
-        }
-
-        .loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-
-        .loading-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--primary-blue);
-            border-top: 3px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .nft-info {
-            padding: 1.5rem;
-        }
-
-        .nft-info h3 {
-            color: var(--primary-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .rarity-badge {
-            display: inline-block;
-            background: var(--gradient-1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-top: 1rem;
-        }
-
-        .shuffle-btn, .mint-btn {
-            width: 100%;
-            margin-top: 1rem;
-            padding: 1rem;
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
+        .card-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .shuffle-btn {
-            background: var(--gradient-2);
+        .card-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 24px;
+            font-weight: 700;
         }
 
-        .mint-btn {
-            background: linear-gradient(135deg, #00D4FF, #667eea);
-            font-size: 1.2rem;
-            padding: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .card-value.accent {
+            color: var(--accent);
         }
 
-        .mint-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s;
+        .card-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
         }
 
-        .mint-btn:hover::before {
-            left: 100%;
+        .dashboard-actions {
+            padding: 24px 28px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
         }
 
-        .shuffle-btn:hover, .mint-btn:hover:not(:disabled) {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 7, 58, 0.3);
+        .btn-primary {
+            flex: 1;
+            height: 52px;
+            background: var(--accent);
+            color: #000;
+            border: none;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .mint-btn:disabled {
-            opacity: 0.5;
+        .btn-primary:hover:not(:disabled) {
+            filter: brightness(1.1);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.4;
             cursor: not-allowed;
         }
 
-        /* Info Cards */
-        .info-card {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
+        .btn-secondary {
+            height: 52px;
+            padding: 0 24px;
+            background: var(--bg-card);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .features {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-top: 1.5rem;
+        .btn-secondary:hover {
+            background: var(--bg-elevated);
         }
 
-        .feature {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .feature-icon {
-            font-size: 2rem;
-        }
-
-        /* Stats */
-        .mint-stats {
+        .mint-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 400px 1fr;
+            gap: 32px;
         }
 
-        .stat {
-            text-align: center;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 8px;
+        .nft-preview {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
         }
 
-        .stat-label {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-blue);
-        }
-
-        /* NFT Types Introduction Section */
-        .nft-types-section {
-            margin-top: 4rem;
-            padding: 0 1rem;
-        }
-
-        .nft-types-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: auto auto auto;
-            gap: 1.5rem;
-            max-width: 1000px;
-            margin: 0 auto;
-            justify-items: center;
-        }
-
-        /* Position NFT #5 in the center */
-        .nft-type-card:nth-child(3) {
-            grid-column: 1 / -1;
-            grid-row: 2;
-            justify-self: center;
-        }
-
-        .nft-type-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s;
+        .preview-image {
+            aspect-ratio: 1;
+            background: var(--bg-card);
             position: relative;
             overflow: hidden;
         }
 
-        .nft-type-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.2);
-        }
-
-        .nft-type-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-blue), var(--primary-red));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .nft-type-card:hover::before {
-            opacity: 1;
-        }
-
-        .nft-type-image {
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 1rem;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 3px solid;
-            position: relative;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .nft-type-image img {
+        .preview-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s;
         }
 
-        .nft-type-card:hover .nft-type-image img {
-            transform: scale(1.05);
+        .nft-preview:hover .preview-image img {
+            transform: scale(1.03);
         }
 
-        .rarity-tag {
-            padding: 0.4rem 0.8rem;
-            border-radius: 25px;
-            margin-bottom: 0.8rem;
-            display: inline-block;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .special-ability {
-            background: rgba(0, 0, 0, 0.15);
-            padding: 0.8rem;
-            border-radius: 10px;
-            border-left: 4px solid;
-            margin-top: 0.8rem;
-            font-size: 0.9rem;
-        }
-
-        .special-ability p {
-            margin: 0;
-            font-weight: 600;
-        }
-
-        /* Celebration Modal */
-        .celebration-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .preview-loading {
+            position: absolute;
+            inset: 0;
             background: rgba(0, 0, 0, 0.8);
             display: flex;
-            justify-content: center;
             align-items: center;
-            z-index: 10000;
+            justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
-        .celebration-modal.active {
+        .preview-loading.active {
             opacity: 1;
             visibility: visible;
         }
 
-        .celebration-content {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            border-radius: 20px;
-            padding: 3rem;
+        .loader {
+            width: 32px;
+            height: 32px;
+            border: 2px solid var(--border);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .preview-info {
+            padding: 20px;
+        }
+
+        .preview-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .preview-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+        }
+
+        .rarity-tag {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .weight-tag {
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .shuffle-btn {
+            width: 100%;
+            height: 48px;
+            margin-top: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .shuffle-btn:hover {
+            background: var(--bg-elevated);
+            border-color: var(--border-hover);
+        }
+
+        .mint-controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .info-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .info-content strong {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 2px;
+        }
+
+        .info-content span {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .mint-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .mint-stat {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
             text-align: center;
-            position: relative;
-            max-width: 500px;
-            width: 90%;
-            border: 2px solid #00D4FF;
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
         }
 
-        .celebration-modal.active .celebration-content {
-            transform: scale(1);
+        .mint-stat-value {
+            font-family: 'Space Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        .celebration-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: bounce 1s infinite;
+        .mint-stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
+        .mint-btn {
+            height: 56px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border: none;
+            border-radius: 14px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .celebration-title {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #00D4FF;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        .mint-btn:hover:not(:disabled) {
+            opacity: 0.9;
         }
 
-        .celebration-subtitle {
-            font-size: 1.2rem;
-            color: #fff;
-            margin-bottom: 2rem;
+        .mint-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
         }
 
-        .nft-preview-modal {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 2rem;
-            border-radius: 15px;
+        .mint-note {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .rarity-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+        }
+
+        .rarity-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .rarity-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+
+        .rarity-card.legendary {
+            grid-column: span 1;
+            border-color: rgba(245, 158, 11, 0.3);
+            background: linear-gradient(180deg, var(--accent-dim) 0%, var(--bg-secondary) 100%);
+        }
+
+        .rarity-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
             overflow: hidden;
-            border: 3px solid #00D4FF;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            margin-bottom: 16px;
+            background: var(--bg-card);
         }
 
-        .nft-preview-modal img {
+        .rarity-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .celebration-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .celebration-btn {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 25px;
+        .rarity-name {
+            font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            margin-bottom: 4px;
         }
 
-        .celebration-btn.primary {
-            background: linear-gradient(135deg, #00D4FF, #667eea);
-            color: white;
+        .rarity-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
         }
 
-        .celebration-btn.secondary {
-            background: transparent;
-            color: #00D4FF;
-            border: 2px solid #00D4FF;
+        .rarity-weight {
+            display: inline-block;
+            padding: 4px 10px;
+            background: var(--bg-card);
+            border-radius: 6px;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
         }
 
-        .celebration-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        .footer {
+            margin-top: 80px;
+            padding: 32px 0;
+            border-top: 1px solid var(--border);
         }
 
-        /* Confetti Animation */
-        .confetti {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: #00D4FF;
-            animation: confetti-fall 3s linear infinite;
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        @keyframes confetti-fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* Special styling for Web3 Liberation (NFT #5) */
-        .nft-type-card.legendary {
-            grid-column: span 2;
-            max-width: 600px;
-            margin: 0 auto;
-            position: relative;
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(255, 215, 0, 0.1) 100%);
-            border: 3px solid #FFD700;
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
-        }
-
-        .nft-type-card.legendary::before {
-            content: 'LEGENDARY';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .nft-type-card.legendary .nft-type-image {
-            width: 220px;
-            height: 220px;
-            border: 4px solid #FFD700;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-        }
-
-        .nft-type-card.legendary h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .nft-type-card.legendary .rarity-tag {
-            font-size: 1rem;
-            padding: 0.6rem 1.2rem;
-            background: linear-gradient(135deg, #FFD700, #FFA500);
-            color: #000;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
-        }
-
-        .nft-type-card.legendary .special-ability {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 165, 0, 0.1));
-            border-left: 6px solid #FFD700;
-            padding: 1rem;
-            font-size: 1rem;
-        }
-
-        .nft-type-card.legendary:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 35px 70px rgba(255, 215, 0, 0.4);
-        }
-
-        /* Toast */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: -400px;
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
-            transition: right 0.3s;
-            z-index: 1000;
+        .footer-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-family: 'Space Mono', monospace;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-contract {
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(calc(100% + 24px));
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
         }
 
         .toast.show {
-            right: 2rem;
+            transform: translateX(0);
         }
 
         .toast.success {
-            border-color: var(--success-green);
+            border-color: var(--success);
         }
 
         .toast.error {
-            border-color: var(--primary-red);
+            border-color: var(--error);
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 6rem;
-            padding: 2rem;
+        .toast-message {
+            font-size: 14px;
+        }
+
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
             text-align: center;
-            border-top: 2px solid var(--border-color);
+            transform: scale(0.95);
+            transition: transform 0.3s;
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .modal-desc {
             color: var(--text-secondary);
+            margin-bottom: 24px;
         }
 
-        /* Punk Style Typography */
-        .punk-text {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 0px #000;
+        .modal-image {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 24px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border);
         }
 
-        .shuffle-btn span, .mint-btn {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .rarity-badge span {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-actions {
+            display: flex;
+            gap: 12px;
         }
 
-        .nft-info h3 {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .modal-actions button {
+            flex: 1;
         }
 
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .nft-types-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 1.2rem;
+        .music-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .music-btn:hover {
+            background: var(--bg-elevated);
+        }
+
+        .music-btn.playing {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        @media (max-width: 1024px) {
+            .mint-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .nft-type-image {
-                width: 160px;
-                height: 160px;
+
+            .rarity-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .rarity-card.legendary {
+                grid-column: span 3;
             }
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
+            .nav-links {
+                display: none;
             }
-            
-            .navbar {
-                padding: 0.8rem 1rem;
-            }
-            
-            .logo {
-                font-size: 1.2rem;
-            }
-            
-            .error-code {
-                font-size: 1.5rem;
-            }
-            
-            .breaker {
-                font-size: 1rem;
-            }
-            
-            .glitch {
-                font-size: 2.2rem;
-                letter-spacing: 2px;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .mint-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .error-display {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .error-box, .success-box {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .arrow {
-                transform: rotate(90deg);
-                font-size: 1.5rem;
-            }
-            
-            .nft-types-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto auto auto auto auto;
-                gap: 1rem;
-                padding: 0 0.5rem;
-            }
-            
-            /* Reset center positioning on mobile */
-            .nft-type-card:nth-child(3) {
-                grid-column: 1;
-                grid-row: 3;
-            }
-            
-            .nft-type-card {
-                padding: 1.2rem;
-            }
-            
-            .nft-type-image {
-                width: 140px;
-                height: 140px;
-            }
-            
-            .nft-type-card h3 {
-                font-size: 1.3rem;
-            }
-            
-            .rarity-tag {
-                font-size: 0.8rem;
-                padding: 0.3rem 0.6rem;
-            }
-            
-            .special-ability {
-                padding: 0.6rem;
-                font-size: 0.85rem;
-            }
-            
-            /* Legendary card mobile adjustments */
-            .nft-type-card.legendary {
-                grid-column: span 1;
-                max-width: 100%;
-                margin: 0;
-            }
-            
-            .nft-type-card.legendary .nft-type-image {
-                width: 160px;
-                height: 160px;
-            }
-            
-            .nft-type-card.legendary h3 {
-                font-size: 1.4rem;
-            }
-            
-            .nft-type-card.legendary .rarity-tag {
-                font-size: 0.9rem;
-                padding: 0.4rem 0.8rem;
-            }
-            
-            .nft-type-card.legendary .special-ability {
-                padding: 0.8rem;
-                font-size: 0.9rem;
-            }
-            
-            .mint-stats {
-                grid-template-columns: 1fr;
-                gap: 0.8rem;
-            }
-            
-            .stat {
-                padding: 0.8rem;
-            }
-            
-            .stat-value {
-                font-size: 1.5rem;
-            }
-            
-            .connect-btn {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.85rem;
-            }
-            
-            .mint-btn {
-                padding: 1.2rem;
-                font-size: 1rem;
-            }
-            
-            .shuffle-btn {
-                padding: 0.8rem;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .glitch {
-                font-size: 1.8rem;
+            .stats-row {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .nft-type-image {
-                width: 120px;
-                height: 120px;
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
             }
-            
-            .nft-type-card h3 {
-                font-size: 1.1rem;
+
+            .rarity-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-            
-            .rarity-tag {
-                font-size: 0.75rem;
+
+            .rarity-card.legendary {
+                grid-column: span 2;
             }
-            
-            .special-ability {
-                font-size: 0.8rem;
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
             }
-            
-            .mint-btn {
-                padding: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .toast {
-                right: 1rem;
-                bottom: 1rem;
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
+
+            .footer-left {
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <div class="matrix-bg"></div>
-    
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="error-code">4GIRL</span>
-                <span class="breaker">NFT</span>
-                <span style="background: linear-gradient(90deg, #667eea, #764ba2); padding: 0.2rem 0.6rem; border-radius: 20px; font-size: 0.7rem; margin-left: 1rem; font-weight: 600;">X8002 POWERED</span>
-                <a href="https://element.market/collections/4GIRL-3?search[toggles][0]=ALL" target="_blank" style="margin-left: 1rem; text-decoration: none;">
-                    <img src="./Elementlogo.png" alt="Element Market" style="height: 24px; width: auto; vertical-align: middle;">
+                <div class="logo-mark">
+                    <img src="./5.png" alt="logo">
+                </div>
+                <span class="logo-text">4IMG</span>
+            </div>
+            <div class="nav-links">
+                <a href="https://element.market/collections/4IMG" target="_blank" class="nav-link">
+                    <img src="./Elementlogo.png" alt="Element">
                 </a>
-                <a href="https://x.com/BEP204GIRL" target="_blank" style="margin-left: 1rem; text-decoration: none;">
-                    <img src="./X.png" alt="X (Twitter)" style="height: 24px; width: auto; vertical-align: middle;">
+                <a href="https://x.com/4IMGBSC" target="_blank" class="nav-link">
+                    <img src="./X.png" alt="X">
                 </a>
-                <a href="https://github.com/talonmemancing-sys/4GIRLProtocol-" target="_blank" style="margin-left: 1rem; text-decoration: none;">
-                    <img src="./GITHUB.png" alt="GitHub Repository" style="height: 24px; width: auto; vertical-align: middle;">
+                <a href="https://github.com/talonmemancing-sys/4IMGProtocol" target="_blank" class="nav-link">
+                    <img src="./GITHUB.png" alt="GitHub">
                 </a>
             </div>
             <button class="connect-btn" id="connectWallet" onclick="connectWallet()">
-                <span>🔗</span>
-                <span>Connect Wallet</span>
+                Connect Wallet
             </button>
         </div>
     </nav>
 
-    <div class="container">
-        <!-- Hero Section -->
+    <main class="container">
         <section class="hero">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <span style="background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 1.2rem; font-weight: 600;">
-                    Powered by X8002 Protocol ⚡ Enhanced with NFT Technology
-                </span>
+            <div class="hero-badge">
+                <span>30% Buyback</span>
+                <span>•</span>
+                <span>70% NFT Dividends</span>
             </div>
-            <h1 class="glitch" data-text="4GIRL">4GIRL</h1>
-            <p class="subtitle">Breaking Web2 Limits with Web3 Technology</p>
-            <p style="color: #00D4FF; margin-top: 1rem; font-size: 1.1rem;">
-                Break through traditional 413 Payload Too Large error limits, experience true decentralized NFT minting
+            <h1>4IMG Protocol</h1>
+            <p class="hero-subtitle">
+                Hold NFTs. Earn BNB. Simple as that.
             </p>
-            
-            <div class="error-display">
-                <div class="error-box">
-                    <h2>HTTP ERROR 413</h2>
-                    <p>Payload Too Large</p>
-                    <br>
-                    <p style="color: #888;">Traditional Web2 Limitation:</p>
-                    <p style="color: #FF073A;">Max Upload: 10MB ❌</p>
+        </section>
+
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value" id="totalMinted">0</div>
+                <div class="stat-label">Minted</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">10,000</div>
+                <div class="stat-label">Max Supply</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="totalDistributed">0</div>
+                <div class="stat-label">Distributed</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="pendingPool">0</div>
+                <div class="stat-label">Pending Pool</div>
+            </div>
+        </div>
+
+        <section class="section" id="dividends">
+            <div class="section-header">
+                <h2 class="section-title">Dividend Dashboard</h2>
+                <p class="section-desc">Track your earnings and claim rewards</p>
+            </div>
+
+            <div class="dividend-dashboard">
+                <div class="dashboard-header">
+                    <span class="dashboard-title">Your Rewards</span>
+                    <div class="timer-badge">
+                        <div class="timer-dot"></div>
+                        <span>Next: </span>
+                        <span id="countdown">--:--</span>
+                    </div>
                 </div>
-                <div class="arrow">→</div>
-                <div class="success-box">
-                    <h2>WEB3 SOLUTION</h2>
-                    <p>Unlimited Potential</p>
-                    <br>
-                    <p style="color: #888;">Blockchain Technology:</p>
-                    <p style="color: #00FF88;">No Size Limits ✅</p>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <div class="card-label">Your NFTs</div>
+                        <div class="card-value" id="userNFTs">0</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-label">Total Weight</div>
+                        <div class="card-value" id="userWeight">0</div>
+                    </div>
+                    <div class="dashboard-card highlight">
+                        <div class="card-label">Estimated Next</div>
+                        <div class="card-value accent" id="estimatedReward">0 BNB</div>
+                        <div class="card-hint">Updates in real-time</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-label">Claimable</div>
+                        <div class="card-value" id="claimable">0 BNB</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-label">Total Claimed</div>
+                        <div class="card-value" id="totalClaimed">0 BNB</div>
+                    </div>
+                    <div class="dashboard-card">
+                        <div class="card-label">Round</div>
+                        <div class="card-value" id="currentRound">0</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-actions">
+                    <button class="btn-primary" id="claimBtn" onclick="claimAll()" disabled>
+                        Claim Dividends
+                    </button>
+                    <button class="btn-secondary" onclick="refreshData()">
+                        Refresh
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- NFT Minting Section -->
-        <section class="mint-section">
-            <h2 class="section-title">
-                <span class="gradient-text">Gasless NFT Minting</span>
-                <span class="beta-tag">BETA</span>
-            </h2>
-            
-            <div class="mint-container">
-                <!-- Preview Area -->
-                <div>
-                    <div class="nft-card">
-                        <div class="nft-image-container">
-                            <img id="nftPreview" src="./1.png" alt="NFT Preview" style="width: 100%; height: 100%; object-fit: cover;" />
-                            <div class="loading-overlay" id="loadingOverlay">
-                                <div class="spinner"></div>
-                            </div>
-                        </div>
-                        <div class="nft-info">
-                            <h3 id="nftName">Genesis Breaker</h3>
-                            <p id="nftDescription">The first NFT to break through 413 limitations</p>
-                            <div class="rarity-badge" id="rarityBadge">
-                                <span>RARITY: </span>
-                                <span id="rarityValue">Rare</span>
-                            </div>
+        <section class="section" id="mint">
+            <div class="section-header">
+                <h2 class="section-title">Mint NFT</h2>
+                <p class="section-desc">Get your ticket to the dividend pool</p>
+            </div>
+
+            <div class="mint-grid">
+                <div class="nft-preview">
+                    <div class="preview-image">
+                        <img id="previewImg" src="./1.png" alt="NFT Preview">
+                        <div class="preview-loading" id="previewLoading">
+                            <div class="loader"></div>
                         </div>
                     </div>
-                    
-                    <button class="shuffle-btn" onclick="shuffleNFT()">
-                        <span>🎲 SHUFFLE PREVIEW</span>
-                    </button>
+                    <div class="preview-info">
+                        <div class="preview-name" id="previewName">Genesis Breaker</div>
+                        <div class="preview-meta">
+                            <span class="rarity-tag" id="rarityTag" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">Rare</span>
+                            <span class="weight-tag">Weight: <span id="weightTag">1x</span></span>
+                        </div>
+                    </div>
+                    <div style="padding: 0 20px 20px;">
+                        <button class="shuffle-btn" onclick="shufflePreview()">
+                            Shuffle Preview
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Minting Controls -->
-                <div>
+                <div class="mint-controls">
                     <div class="info-card">
-                        <h3>🚀 Gasless Minting</h3>
-                        <p>Experience the future of NFTs with zero gas fees!</p>
-                        
-                        <div class="features">
-                            <div class="feature">
-                                <span class="feature-icon">⚡</span>
-                                <div>
-                                    <strong>Instant Mint</strong>
-                                    <p style="color: #888; font-size: 0.9rem;">No waiting, no gas</p>
+                        <h3>Why Mint?</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">💰</div>
+                                <div class="info-content">
+                                    <strong>Earn BNB Passively</strong>
+                                    <span>70% of all taxes go to NFT holders</span>
                                 </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon">🎨</span>
-                                <div>
-                                    <strong>Unique Art</strong>
-                                    <p style="color: #888; font-size: 0.9rem;">5 exclusive designs</p>
+                            <div class="info-item">
+                                <div class="info-icon">⚖️</div>
+                                <div class="info-content">
+                                    <strong>Weight-Based Rewards</strong>
+                                    <span>Higher rarity = larger dividend share</span>
                                 </div>
                             </div>
-                            <div class="feature">
-                                <span class="feature-icon">♾️</span>
-                                <div>
-                                    <strong>No Size Limit</strong>
-                                    <p style="color: #888; font-size: 0.9rem;">Break Web2 barriers</p>
+                            <div class="info-item">
+                                <div class="info-icon">⏱️</div>
+                                <div class="info-content">
+                                    <strong>30-Min Cycles</strong>
+                                    <span>Regular distributions, instant claims</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mint-stats">
-                        <div class="stat">
-                            <span class="stat-label">Total 4GIRL Minted</span>
-                            <span class="stat-value" id="totalMinted">2,847</span>
+                        <div class="mint-stat">
+                            <div class="mint-stat-value" id="mintProgress">0/1000</div>
+                            <div class="mint-stat-label">Minted</div>
                         </div>
-                        <div class="stat">
-                            <span class="stat-label">Your 4GIRL NFTs</span>
-                            <span class="stat-value" id="userNFTs">0</span>
+                        <div class="mint-stat">
+                            <div class="mint-stat-value" id="yourNFTs">0</div>
+                            <div class="mint-stat-label">Your NFTs</div>
                         </div>
                     </div>
-                    
+
                     <button class="mint-btn" id="mintBtn" onclick="mintNFT()" disabled>
-                        ⚡ MINT NFT - 0.001 BNB
+                        Mint NFT — Free
                     </button>
-                    
-                    <!-- Fee Information -->
-                    <div style="margin-top: 0.5rem; padding: 0.5rem; background: rgba(255, 7, 58, 0.1); border: 1px solid rgba(255, 7, 58, 0.3); border-radius: 8px; font-size: 0.8rem; text-align: center;">
-                        <span style="color: #FF073A; font-weight: bold;">⚠️ Mint Fee: 0.001 BNB</span>
-                        <br>
-                        <span style="color: #ccc;">Each mint requires 0.001 BNB payment</span>
-                    </div>
-                    
-                    <!-- Debug Info -->
-                    <div style="margin-top: 1rem; padding: 0.5rem; background: rgba(0,0,0,0.3); border-radius: 8px; font-size: 0.8rem;">
-                        <div>Contract: <span id="contractStatus">Not initialized</span></div>
-                        <div>Network: <span id="networkStatus">Unknown</span></div>
-                        <div>Account: <span id="accountStatus">Not connected</span></div>
-                    </div>
+
+                    <p class="mint-note">Max 20 per wallet • Random rarity</p>
                 </div>
             </div>
         </section>
 
-        <!-- NFT Types Introduction Section -->
-        <section class="nft-types-section">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary-blue);">
-                4GIRL NFT Types Introduction
-            </h2>
-            <p style="text-align: center; color: #888; margin-bottom: 3rem;">
-                Explore five unique 4GIRL NFT types, each representing a different way to break through 413 limitations
-            </p>
-            
-            <div class="nft-types-grid">
-                <!-- Genesis Breaker (1) -->
-                <div class="nft-type-card" style="border: 2px solid #00FF88;">
-                    <div class="nft-type-image" style="border-color: #00FF88;">
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Rarity & Weights</h2>
+                <p class="section-desc">Higher rarity means bigger dividend share</p>
+            </div>
+
+            <div class="rarity-grid">
+                <div class="rarity-card">
+                    <div class="rarity-image">
                         <img src="./1.png" alt="Genesis Breaker">
                     </div>
-                    <h3 style="color: #00FF88; margin-bottom: 1rem; font-size: 1.5rem;">Genesis Breaker</h3>
-                    <div class="rarity-tag" style="background: linear-gradient(135deg, #00FF8822, #00FF8855); color: #00FF88;">
-                        Rare
-                </div>
-                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1rem;">
-                        The first NFT to break through 413 limitations
-                    </p>
-                    <div class="special-ability" style="border-left-color: #00FF88;">
-                        <p style="color: #00FF88; font-weight: 600; margin: 0;">Special Ability: Break all traditional limits</p>
-                    </div>
-                </div>
-                
-                <!-- Cyber Overflow (2) -->
-                <div class="nft-type-card" style="border: 2px solid #00D4FF;">
-                    <div class="nft-type-image" style="border-color: #00D4FF;">
-                        <img src="./2.png" alt="Cyber Overflow">
-                    </div>
-                    <h3 style="color: #00D4FF; margin-bottom: 1rem; font-size: 1.5rem;">Cyber Overflow</h3>
-                    <div class="rarity-tag" style="background: linear-gradient(135deg, #00D4FF22, #00D4FF55); color: #00D4FF;">
-                        Ultra Rare
-                    </div>
-                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1rem;">
-                        When data transcends all limitations
-                    </p>
-                    <div class="special-ability" style="border-left-color: #00D4FF;">
-                        <p style="color: #00D4FF; font-weight: 600; margin: 0;">Special Ability: Unlimited data storage</p>
-                </div>
-            </div>
-            
-                <!-- Web3 Liberation (5) - Center -->
-                <div class="nft-type-card legendary" style="border: 3px solid #FFD700;">
-                    <div class="nft-type-image" style="border-color: #FFD700;">
-                        <img src="./5.png" alt="Web3 Liberation">
-                    </div>
-                    <h3 style="color: #FFD700; margin-bottom: 1rem; font-size: 1.8rem;">Web3 Liberation</h3>
-                    <div class="rarity-tag" style="background: linear-gradient(135deg, #FFD700, #FFA500); color: #000;">
-                        Legendary
-                    </div>
-                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1rem;">
-                        Freedom from centralized constraints
-                    </p>
-                    <div class="special-ability" style="border-left-color: #FFD700;">
-                        <p style="color: #FFD700; font-weight: 600; margin: 0;">Special Ability: Complete decentralized freedom</p>
-            </div>
+                    <div class="rarity-name">Genesis Breaker</div>
+                    <div class="rarity-meta">Rare • 40%</div>
+                    <div class="rarity-weight" style="color: #22c55e;">1x</div>
                 </div>
 
-                <!-- Payload Phoenix (3) -->
-                <div class="nft-type-card" style="border: 2px solid #667eea;">
-                    <div class="nft-type-image" style="border-color: #667eea;">
+                <div class="rarity-card">
+                    <div class="rarity-image">
+                        <img src="./2.png" alt="Cyber Overflow">
+                    </div>
+                    <div class="rarity-name">Cyber Overflow</div>
+                    <div class="rarity-meta">Ultra Rare • 25%</div>
+                    <div class="rarity-weight" style="color: #3b82f6;">2x</div>
+                </div>
+
+                <div class="rarity-card">
+                    <div class="rarity-image">
                         <img src="./3.png" alt="Payload Phoenix">
                     </div>
-                    <h3 style="color: #667eea; margin-bottom: 1rem; font-size: 1.5rem;">Payload Phoenix</h3>
-                    <div class="rarity-tag" style="background: linear-gradient(135deg, #667eea22, #667eea55); color: #667eea;">
-                        Epic
-                    </div>
-                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1rem;">
-                        Reborn from the ashes of 413 errors
-                    </p>
-                    <div class="special-ability" style="border-left-color: #667eea;">
-                        <p style="color: #667eea; font-weight: 600; margin: 0;">Special Ability: Rebirth from errors</p>
-            </div>
+                    <div class="rarity-name">Payload Phoenix</div>
+                    <div class="rarity-meta">Epic • 20%</div>
+                    <div class="rarity-weight" style="color: #8b5cf6;">4x</div>
                 </div>
-                
-                <!-- Infinite Buffer (4) -->
-                <div class="nft-type-card" style="border: 2px solid #FF073A;">
-                    <div class="nft-type-image" style="border-color: #FF073A;">
+
+                <div class="rarity-card">
+                    <div class="rarity-image">
                         <img src="./4.png" alt="Infinite Buffer">
-                </div>
-                    <h3 style="color: #FF073A; margin-bottom: 1rem; font-size: 1.5rem;">Infinite Buffer</h3>
-                    <div class="rarity-tag" style="background: linear-gradient(135deg, #FF073A22, #FF073A55); color: #FF073A;">
-                        Mythic
-                </div>
-                    <p style="color: #aaa; line-height: 1.6; margin-bottom: 1rem;">
-                        Unlimited in the blockchain realm
-                    </p>
-                    <div class="special-ability" style="border-left-color: #FF073A;">
-                        <p style="color: #FF073A; font-weight: 600; margin: 0;">Special Ability: Unlimited buffer storage</p>
                     </div>
+                    <div class="rarity-name">Infinite Buffer</div>
+                    <div class="rarity-meta">Mythic • 10%</div>
+                    <div class="rarity-weight" style="color: #ec4899;">6x</div>
+                </div>
+
+                <div class="rarity-card legendary">
+                    <div class="rarity-image">
+                        <img src="./5.png" alt="Web3 Liberation">
+                    </div>
+                    <div class="rarity-name">Web3 Liberation</div>
+                    <div class="rarity-meta">Legendary • 5%</div>
+                    <div class="rarity-weight" style="color: var(--accent);">10x</div>
                 </div>
             </div>
         </section>
-                </div>
-                
-    <!-- Celebration Modal -->
-    <div class="celebration-modal" id="celebrationModal">
-        <div class="celebration-content">
-            <div class="celebration-icon">🎉</div>
-            <h2 class="celebration-title">MINT SUCCESSFUL!</h2>
-            <p class="celebration-subtitle">Congratulations! You've successfully minted your 4GIRL NFT</p>
-            
-            <div class="nft-preview-modal">
-                <img id="modalNFTImage" src="" alt="Minted NFT">
-                </div>
-                
-            <div class="celebration-actions">
-                <button class="celebration-btn primary" onclick="closeCelebrationModal()">Mint Another</button>
-                <button class="celebration-btn secondary" onclick="viewOnElement()">View on Element</button>
-                </div>
-            </div>
-    </div>
+    </main>
 
     <footer class="footer">
-        <p style="margin-bottom: 1rem;">Breaking Web2 Limits with Web3 Technology</p>
-        <p style="font-size: 0.9rem; color: #667eea;">
-            Powered by X8002 Protocol | Enhanced with NFT Technology
-        </p>
-        <div style="margin: 1rem 0;">
-            <a href="https://element.market/collections/4GIRL-3?search[toggles][0]=ALL" target="_blank" style="text-decoration: none; color: #00D4FF; margin-right: 1rem;">
-                <img src="./Elementlogo.png" alt="Element Market" style="height: 20px; width: auto; vertical-align: middle; margin-right: 0.5rem;">
-                View on Element Market
-            </a>
-            <a href="https://x.com/BEP204GIRL" target="_blank" style="text-decoration: none; color: #00D4FF; margin-right: 1rem;">
-                <img src="./X.png" alt="X (Twitter)" style="height: 20px; width: auto; vertical-align: middle; margin-right: 0.5rem;">
-                Follow on X
-            </a>
-            <a href="https://github.com/talonmemancing-sys/4GIRLProtocol-" target="_blank" style="text-decoration: none; color: #00D4FF; margin-right: 1rem;">
-                <img src="./GITHUB.png" alt="GitHub Repository" style="height: 20px; width: auto; vertical-align: middle; margin-right: 0.5rem;">
-                View Source Code
-            </a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <span class="footer-logo">4IMG</span>
+                    <div class="footer-links">
+                        <a href="https://element.market/collections/4IMG" target="_blank">Element</a>
+                        <a href="https://x.com/4IMGBSC" target="_blank">Twitter</a>
+                        <a href="https://github.com/talonmemancing-sys/4IMGProtocol" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="footer-contract">
+                    0xeccb134d5018280758080286e21786300136118d
+                </div>
+            </div>
         </div>
-        <p style="font-size: 0.8rem; color: #666; margin-top: 1rem;">
-            Contract: 0xD92eDcb7768FE5232Ffa6DBa6B098Ad3A9720B78 | Mint Fee: 0.001 BNB
-        </p>
     </footer>
 
-    <!-- Toast Notification -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
+    <audio id="bgMusic" loop>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-happiness-101.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Success!</h2>
+            <p class="modal-desc">Your NFT has been minted</p>
+            <div class="modal-image">
+                <img id="modalImg" src="" alt="Minted NFT">
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" onclick="closeModal()">Mint More</button>
+                <button class="btn-primary" onclick="viewCollection()">View Collection</button>
+            </div>
+        </div>
+    </div>
+
     <div class="toast" id="toast">
-        <span id="toastIcon">ℹ️</span>
-        <span id="toastMessage">Message</span>
+        <span id="toastIcon">✓</span>
+        <span class="toast-message" id="toastMsg">Message</span>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
     <script>
-        // Contract Configuration - Updated with new deployed contract
-        const CONTRACT_ADDRESS = '0xD92eDcb7768FE5232Ffa6DBa6B098Ad3A9720B78';
-        const OPENSEA_COLLECTION = 'https://element.market/collections/4GIRL-3?search[toggles][0]=ALL';
-        
-        // Contract ABI - Essential functions for minting
-        const CONTRACT_ABI = [
-            {
-                "inputs": [],
-                "name": "mint",
-                "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-                "stateMutability": "nonpayable",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "totalSupply",
-                "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [{"internalType": "address", "name": "owner", "type": "address"}],
-                "name": "balanceOf",
-                "outputs": [{"internalType": "uint256", "name": "", "type": "uint256"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [{"internalType": "uint256", "name": "tokenId", "type": "uint256"}],
-                "name": "tokenURI",
-                "outputs": [{"internalType": "string", "name": "", "type": "string"}],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [{"internalType": "uint256", "name": "tokenId", "type": "uint256"}],
-                "name": "getTokenDetails",
-                "outputs": [
-                    {"internalType": "uint8", "name": "nftType", "type": "uint8"},
-                    {"internalType": "string", "name": "typeName", "type": "string"},
-                    {"internalType": "string", "name": "rarity", "type": "string"},
-                    {"internalType": "string", "name": "imageUrl", "type": "string"}
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "getMintStats",
-                "outputs": [
-                    {"internalType": "uint256", "name": "currentSupply", "type": "uint256"},
-                    {"internalType": "uint256", "name": "maxSupply", "type": "uint256"},
-                    {"internalType": "uint256", "name": "userBalance", "type": "uint256"},
-                    {"internalType": "uint256", "name": "maxPerWallet", "type": "uint256"}
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "anonymous": false,
-                "inputs": [
-                    {"indexed": true, "internalType": "address", "name": "to", "type": "address"},
-                    {"indexed": true, "internalType": "uint256", "name": "tokenId", "type": "uint256"},
-                    {"indexed": false, "internalType": "uint8", "name": "nftType", "type": "uint8"}
-                ],
-                "name": "NFTMinted",
-                "type": "event"
-            }
-        ];
-        
-        // Network Configuration
-        const NETWORK_CONFIG = {
-            BSC_MAINNET: 56,
-            BSC_TESTNET: 97,
-            ETHEREUM_MAINNET: 1,
-            POLYGON_MAINNET: 137
-        };
-        
-        // NFT designs with local images
-        const NFT_DESIGNS = [
-            {
-                name: "Genesis Breaker",
-                description: "The first NFT to break through 413 limitations",
-                rarity: "Rare",
-                color: "#00FF88",
-                image: "./1.png"
-            },
-            {
-                name: "Cyber Overflow", 
-                description: "When data transcends all limitations",
-                rarity: "Ultra Rare",
-                color: "#00D4FF",
-                image: "./2.png"
-            },
-            {
-                name: "Payload Phoenix",
-                description: "Reborn from the ashes of 413 errors",
-                rarity: "Epic",
-                color: "#667eea",
-                image: "./3.png"
-            },
-            {
-                name: "Infinite Buffer",
-                description: "Unlimited in the blockchain realm",
-                rarity: "Mythic",
-                color: "#FF073A",
-                image: "./4.png"
-            },
-            {
-                name: "Web3 Liberation",
-                description: "Freedom from centralized constraints",
-                rarity: "Legendary",
-                color: "#FFD700",
-                image: "./5.png"
-            }
+        const NFT_ADDRESS = '0xeccb134d5018280758080286e21786300136118d';
+        const DIVIDEND_ADDRESS = '0xabA73c2d8d3aA8B76841C3E24Cd9b9e47Df4FeA1';
+
+        const NFT_ABI = [
+            {"inputs":[],"name":"mint","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},
+            {"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
         ];
 
-        let web3;
-        let userAccount;
-        let contract;
-        let currentDesign = NFT_DESIGNS[0]; // Default display first NFT
-        let userNFTCount = 0;
+        const DIVIDEND_ABI = [
+            {"inputs":[],"name":"claimAll","outputs":[],"stateMutability":"nonpayable","type":"function"},
+            {"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"calculateUserWeight","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getEstimatedReward","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getClaimableAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"getUserTotalClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"currentRound","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"getNextDistributionTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"pendingDividends","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},
+            {"inputs":[],"name":"totalDistributed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}
+        ];
 
-        // Initialize on load
-        window.addEventListener('load', () => {
-            console.log('Page loaded, initializing...');
-            
-            // Set default display
-            updateNFTDisplay(currentDesign);
-            
-            // Check if wallet is already connected
-            if (typeof window.ethereum !== 'undefined') {
-                window.ethereum.request({ method: 'eth_accounts' })
-                    .then(async accounts => {
-                        if (accounts.length > 0) {
-                            console.log('Wallet already connected:', accounts[0]);
-                            // Auto-connect if wallet is already connected
-                            await connectWallet();
-                        }
-                    })
-                    .catch(error => {
-                        console.log('No wallet connected:', error);
-                    });
-            }
-            
-            // Listen for account changes
-            if (typeof window.ethereum !== 'undefined') {
-                window.ethereum.on('accountsChanged', (accounts) => {
-                    if (accounts.length === 0) {
-                        // User disconnected
-                        userAccount = null;
-                        contract = null;
-                        document.getElementById('connectWallet').innerHTML = '<span>🔗</span><span>Connect Wallet</span>';
-                        document.getElementById('mintBtn').disabled = true;
-                        showToast('Wallet disconnected', 'info');
-                    } else {
-                        // User switched accounts
-                        userAccount = accounts[0];
-                        // Reconnect with new account
-                        location.reload();
-                    }
-                });
-                
-                window.ethereum.on('chainChanged', (chainId) => {
-                    console.log('Chain changed to:', chainId);
-                    // Reload page to update network
-                    window.location.reload();
-                });
-            }
-            
-            console.log('Initialization complete');
-            
-            // Make sure connectWallet is available globally
-            window.connectWallet = connectWallet;
-            console.log('connectWallet function registered globally');
-        });
+        const DESIGNS = [
+            { name: "Genesis Breaker", rarity: "Rare", weight: 1, color: "#22c55e", bg: "rgba(34, 197, 94, 0.15)", image: "./1.png" },
+            { name: "Cyber Overflow", rarity: "Ultra Rare", weight: 2, color: "#3b82f6", bg: "rgba(59, 130, 246, 0.15)", image: "./2.png" },
+            { name: "Payload Phoenix", rarity: "Epic", weight: 4, color: "#8b5cf6", bg: "rgba(139, 92, 246, 0.15)", image: "./3.png" },
+            { name: "Infinite Buffer", rarity: "Mythic", weight: 6, color: "#ec4899", bg: "rgba(236, 72, 153, 0.15)", image: "./4.png" },
+            { name: "Web3 Liberation", rarity: "Legendary", weight: 10, color: "#f59e0b", bg: "rgba(245, 158, 11, 0.15)", image: "./5.png" }
+        ];
 
-        function updateNFTDisplay(design) {
-            document.getElementById('nftName').textContent = design.name;
-            document.getElementById('nftDescription').textContent = design.description;
-            document.getElementById('rarityValue').textContent = design.rarity;
-            
-            // Update NFT image
-            const nftImage = document.getElementById('nftPreview');
-            nftImage.src = design.image;
-            nftImage.alt = design.name;
-            
-            // Update rarity badge color
-            const rarityBadge = document.getElementById('rarityBadge');
-            rarityBadge.style.background = `linear-gradient(135deg, ${design.color}22, ${design.color}55)`;
+        let web3, account, nftContract, dividendContract;
+        let current = DESIGNS[0];
+        let countdownTimer;
+        let playing = false;
+
+        function toggleMusic() {
+            const audio = document.getElementById('bgMusic');
+            const btn = document.getElementById('musicBtn');
+            if (playing) {
+                audio.pause();
+                btn.classList.remove('playing');
+                btn.textContent = '🎵';
+            } else {
+                audio.volume = 0.3;
+                audio.play().catch(() => {});
+                btn.classList.add('playing');
+                btn.textContent = '🔊';
+            }
+            playing = !playing;
         }
 
-        // Test function to verify mapping
-        function testNFTMapping() {
-            console.log('Testing NFT mapping...');
-            for (let i = 0; i < 5; i++) {
-                const design = getDesignByContractType(i);
-                console.log(`Type ${i}:`, design.name, design.rarity, design.color);
-            }
+        function updatePreview(d) {
+            document.getElementById('previewImg').src = d.image;
+            document.getElementById('previewName').textContent = d.name;
+            document.getElementById('rarityTag').textContent = d.rarity;
+            document.getElementById('rarityTag').style.background = d.bg;
+            document.getElementById('rarityTag').style.color = d.color;
+            document.getElementById('weightTag').textContent = d.weight + 'x';
         }
-        
-        // Call test function on load
-        window.addEventListener('load', () => {
-            setTimeout(testNFTMapping, 1000);
-        });
 
-        // Map contract NFT type to design
-        function getDesignByContractType(contractType) {
-            console.log('getDesignByContractType called with:', contractType, 'Type:', typeof contractType);
-            
-            // Contract types: 0=GENESIS_BREAKER, 1=CYBER_OVERFLOW, 2=PAYLOAD_PHOENIX, 3=INFINITE_BUFFER, 4=WEB3_LIBERATION
-            const typeMapping = {
-                0: NFT_DESIGNS[0], // Genesis Breaker (1.png) - Rare - Green
-                1: NFT_DESIGNS[1], // Cyber Overflow (2.png) - Ultra Rare - Blue
-                2: NFT_DESIGNS[2], // Payload Phoenix (3.png) - Epic - Purple
-                3: NFT_DESIGNS[3], // Infinite Buffer (4.png) - Mythic - Red
-                4: NFT_DESIGNS[4]  // Web3 Liberation (5.png) - Legendary - Yellow
-            };
-            
-            const result = typeMapping[contractType] || NFT_DESIGNS[0];
-            console.log('Mapping result:', result);
-            return result;
+        function shufflePreview() {
+            document.getElementById('previewLoading').classList.add('active');
+            setTimeout(() => {
+                current = DESIGNS[Math.floor(Math.random() * DESIGNS.length)];
+                updatePreview(current);
+                document.getElementById('previewLoading').classList.remove('active');
+            }, 400);
         }
 
         async function connectWallet() {
-            console.log('connectWallet function called');
-            try {
-                if (typeof window.ethereum !== 'undefined') {
-                    web3 = new Web3(window.ethereum);
-                    
-                    // Request account access
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    if (!accounts || accounts.length === 0) {
-                        showToast('No accounts found. Please unlock your wallet.', 'error');
-                        return;
-                    }
-                    
-                    userAccount = accounts[0];
-                    console.log('Connected account:', userAccount);
-                    
-                    // Initialize contract
-                    try {
-                        contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-                        console.log('Contract initialized:', CONTRACT_ADDRESS);
-                        document.getElementById('contractStatus').textContent = 'Initialized';
-                    } catch (contractError) {
-                        console.error('Contract initialization error:', contractError);
-                        showToast('Contract initialization failed', 'error');
-                        document.getElementById('contractStatus').textContent = 'Failed';
-                        return;
-                    }
-                    
-                    // Check network
-                    const chainId = await web3.eth.getChainId();
-                    console.log('Current chain ID:', chainId);
-                    document.getElementById('networkStatus').textContent = `Chain ID: ${chainId}`;
-                    
-                    // Allow multiple networks for testing
-                    const supportedNetworks = [
-                        NETWORK_CONFIG.BSC_MAINNET,
-                        NETWORK_CONFIG.BSC_TESTNET,
-                        NETWORK_CONFIG.ETHEREUM_MAINNET,
-                        NETWORK_CONFIG.POLYGON_MAINNET
-                    ];
-                    
-                    if (!supportedNetworks.includes(chainId)) {
-                        showToast('Please switch to a supported network (BSC, Ethereum, or Polygon)', 'error');
-                        await switchToBSC();
-                        return;
-                    }
-                    
-                    // Update UI
-                    const shortAddress = userAccount.slice(0, 6) + '...' + userAccount.slice(-4);
-                    document.getElementById('connectWallet').innerHTML = `<span>✅</span><span>${shortAddress}</span>`;
-                    document.getElementById('mintBtn').disabled = false;
-                    document.getElementById('accountStatus').textContent = shortAddress;
-                    
-                    // Update stats
-                    try {
-                        await updateMintStats();
-                    } catch (statsError) {
-                        console.error('Stats update error:', statsError);
-                        // Don't fail connection if stats fail
-                    }
-                    
-                    showToast('Wallet connected successfully!', 'success');
-                    
-                } else {
-                    showToast('Please install MetaMask or another Web3 wallet!', 'error');
-                    window.open('https://metamask.io/download/', '_blank');
-                }
-            } catch (error) {
-                console.error('Connection error:', error);
-                if (error.code === 4001) {
-                    showToast('Connection rejected by user', 'error');
-                } else if (error.code === -32002) {
-                    showToast('Connection request already pending', 'error');
-                } else {
-                    showToast('Wallet connection failed: ' + error.message, 'error');
-                }
+            if (!window.ethereum) {
+                toast('Please install MetaMask', 'error');
+                return;
             }
-        }
-
-        async function switchToBSC() {
             try {
-                await window.ethereum.request({
-                    method: 'wallet_switchEthereumChain',
-                    params: [{ chainId: '0x38' }], // BSC Mainnet
-                });
-            } catch (switchError) {
-                // If BSC is not added, add it
-                if (switchError.code === 4902) {
-                    try {
-                    await window.ethereum.request({
-                        method: 'wallet_addEthereumChain',
-                        params: [{
-                            chainId: '0x38',
-                            chainName: 'Binance Smart Chain',
-                                nativeCurrency: {
-                                    name: 'BNB',
-                                    symbol: 'BNB',
-                                    decimals: 18
-                                },
-                            rpcUrls: ['https://bsc-dataseed.binance.org/'],
-                            blockExplorerUrls: ['https://bscscan.com/']
-                        }]
-                    });
-                    } catch (addError) {
-                        console.error('Failed to add BSC network:', addError);
-                        showToast('Failed to add BSC network', 'error');
-                    }
-                } else {
-                    console.error('Failed to switch to BSC:', switchError);
-                    showToast('Failed to switch to BSC network', 'error');
+                web3 = new Web3(window.ethereum);
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                account = accounts[0];
+
+                nftContract = new web3.eth.Contract(NFT_ABI, NFT_ADDRESS);
+                if (DIVIDEND_ADDRESS) {
+                    dividendContract = new web3.eth.Contract(DIVIDEND_ABI, DIVIDEND_ADDRESS);
+                    document.getElementById('claimBtn').disabled = false;
                 }
-            }
-        }
 
-        async function updateMintStats() {
-            try {
-                if (!contract || !userAccount) {
-                    console.log('Contract or user account not available for stats update');
+                const chainId = await web3.eth.getChainId();
+                if (chainId !== 56 && chainId !== 97) {
+                    toast('Please switch to BSC', 'error');
                     return;
                 }
-                
-                console.log('Updating mint stats...');
-                const stats = await contract.methods.getMintStats().call();
-                console.log('Mint stats from contract:', stats);
-                
-                // Update UI with real contract data
-                document.getElementById('totalMinted').textContent = stats.currentSupply.toString();
-                document.getElementById('userNFTs').textContent = stats.userBalance.toString();
-                
-                // Update user NFT count
-                userNFTCount = parseInt(stats.userBalance);
-                
-                console.log('Stats updated:', {
-                    totalMinted: stats.currentSupply,
-                    userNFTs: stats.userBalance,
-                    maxSupply: stats.maxSupply,
-                    maxPerWallet: stats.maxPerWallet
-                });
-                
-            } catch (error) {
-                console.error('Error updating stats:', error);
-                // Fallback to basic total supply if getMintStats fails
-                try {
-                    const totalSupply = await contract.methods.totalSupply().call();
-                    document.getElementById('totalMinted').textContent = totalSupply.toString();
-                    console.log('Fallback total supply:', totalSupply);
-                } catch (fallbackError) {
-                    console.error('Fallback stats update failed:', fallbackError);
-                }
+
+                const short = account.slice(0, 6) + '...' + account.slice(-4);
+                const btn = document.getElementById('connectWallet');
+                btn.textContent = short;
+                btn.classList.add('connected');
+                document.getElementById('mintBtn').disabled = false;
+
+                await updateStats();
+                await refreshData();
+                toast('Wallet connected');
+            } catch (e) {
+                console.error('Connect error:', e);
+                toast(e.message, 'error');
             }
         }
 
-        function shuffleNFT() {
-            document.getElementById('loadingOverlay').classList.add('active');
-            
-            setTimeout(() => {
-                const randomIndex = Math.floor(Math.random() * NFT_DESIGNS.length);
-                currentDesign = NFT_DESIGNS[randomIndex];
+        async function updateStats() {
+            if (!nftContract || !account) return;
+            try {
+                const totalSupply = await nftContract.methods.totalSupply().call();
+                const userBalance = await nftContract.methods.balanceOf(account).call();
                 
-                updateNFTDisplay(currentDesign);
-                
-                document.getElementById('loadingOverlay').classList.remove('active');
-            }, 800);
+                document.getElementById('totalMinted').textContent = totalSupply;
+                document.getElementById('mintProgress').textContent = totalSupply + '/10000';
+                document.getElementById('userNFTs').textContent = userBalance;
+                document.getElementById('yourNFTs').textContent = userBalance;
+            } catch (e) {
+                console.error('Error updating stats:', e);
+            }
+        }
+
+        async function refreshData() {
+            if (!dividendContract || !account) return;
+            try {
+                const [weight, est, claim, claimed, round, nextTime, pending, totalDist] = await Promise.all([
+                    dividendContract.methods.calculateUserWeight(account).call(),
+                    dividendContract.methods.getEstimatedReward(account).call(),
+                    dividendContract.methods.getClaimableAmount(account).call(),
+                    dividendContract.methods.getUserTotalClaimed(account).call(),
+                    dividendContract.methods.currentRound().call(),
+                    dividendContract.methods.getNextDistributionTime().call(),
+                    dividendContract.methods.pendingDividends().call(),
+                    dividendContract.methods.totalDistributed().call()
+                ]);
+
+                document.getElementById('userWeight').textContent = weight;
+                document.getElementById('estimatedReward').textContent = fmt(est) + ' BNB';
+                document.getElementById('claimable').textContent = fmt(claim) + ' BNB';
+                document.getElementById('totalClaimed').textContent = fmt(claimed) + ' BNB';
+                document.getElementById('currentRound').textContent = round;
+                document.getElementById('pendingPool').textContent = fmt(pending);
+                document.getElementById('totalDistributed').textContent = fmt(totalDist);
+
+                if (countdownTimer) clearInterval(countdownTimer);
+                let left = parseInt(nextTime);
+                function tick() {
+                    if (left <= 0) {
+                        document.getElementById('countdown').textContent = 'Ready';
+                        return;
+                    }
+                    const m = Math.floor(left / 60);
+                    const s = left % 60;
+                    document.getElementById('countdown').textContent = m + ':' + String(s).padStart(2, '0');
+                    left--;
+                }
+                tick();
+                countdownTimer = setInterval(tick, 1000);
+            } catch (e) {
+                console.error('Error refreshing data:', e);
+            }
+        }
+
+        function fmt(wei) {
+            return parseFloat(web3.utils.fromWei(wei, 'ether')).toFixed(4);
         }
 
         async function mintNFT() {
-            if (!currentDesign) {
-                showToast('Please shuffle to select an NFT first', 'error');
-                return;
-            }
-            
-            if (!userAccount) {
-                showToast('Please connect your wallet first', 'error');
-                return;
-            }
-            
-            if (!contract) {
-                showToast('Contract not initialized', 'error');
-                return;
-            }
-            
+            if (!account) return;
             try {
-                const mintBtn = document.getElementById('mintBtn');
-                mintBtn.disabled = true;
-                mintBtn.innerHTML = '⏳ Minting...';
+                document.getElementById('mintBtn').disabled = true;
+                document.getElementById('mintBtn').textContent = 'Minting...';
                 
-                showToast('Please confirm the transaction (0.001 BNB fee) in your wallet', 'info');
-                
-                // Call the contract mint function with 0.001 BNB fee
-                const tx = await contract.methods.mint().send({ 
-                    from: userAccount,
-                    value: web3.utils.toWei('0.001', 'ether') // 0.001 BNB fee
+                // 调用免费mint
+                await nftContract.methods.mint().send({
+                    from: account
                 });
                 
-                showToast('Transaction submitted! Waiting for confirmation...', 'info');
-                
-                // Wait for transaction confirmation
-                const receipt = await web3.eth.getTransactionReceipt(tx.transactionHash);
-                
-                if (receipt.status) {
-                    // Get the minted token ID from the event
-                    const mintEvent = receipt.logs.find(log => {
-                        try {
-                            const decoded = web3.eth.abi.decodeLog(
-                                CONTRACT_ABI.find(abi => abi.name === 'NFTMinted').inputs,
-                                log.data,
-                                log.topics.slice(1)
-                            );
-                            return decoded.to.toLowerCase() === userAccount.toLowerCase();
-                        } catch (e) {
-                            return false;
-                        }
-                    });
-                    
-                    if (mintEvent) {
-                        const decoded = web3.eth.abi.decodeLog(
-                            CONTRACT_ABI.find(abi => abi.name === 'NFTMinted').inputs,
-                            mintEvent.data,
-                            mintEvent.topics.slice(1)
-                        );
-                        
-                        const tokenId = decoded.tokenId;
-                        const nftType = decoded.nftType;
-                        
-                        console.log('Minted NFT:', { tokenId, nftType });
-                        
-                        // Get real NFT details from contract
-                        try {
-                            const tokenDetails = await contract.methods.getTokenDetails(tokenId).call();
-                            console.log('Token details:', tokenDetails);
-                            console.log('Contract nftType:', tokenDetails.nftType, 'Type:', typeof tokenDetails.nftType);
-                            
-                            // Convert to number if it's a string
-                            const nftTypeNumber = parseInt(tokenDetails.nftType);
-                            console.log('Parsed nftType:', nftTypeNumber);
-                            
-                            // Map contract NFT type to our design
-                            const mintedDesign = getDesignByContractType(nftTypeNumber);
-                            console.log('Mapped design:', mintedDesign);
-                            
-                            // Update stats
-                            await updateMintStats();
-                            
-                            // Show celebration modal with real NFT data
-                            showCelebrationModal(tokenId, mintedDesign, tokenDetails);
-                            
-                            showToast(`NFT #${tokenId} minted successfully! 🎉`, 'success');
-                            
-                            // Shuffle for next mint
-                setTimeout(shuffleNFT, 1000);
-                            
-                        } catch (detailError) {
-                            console.error('Error getting token details:', detailError);
-                            // Fallback to current design
-                            await updateMintStats();
-                            showCelebrationModal(tokenId, currentDesign);
-                            showToast(`NFT #${tokenId} minted successfully! 🎉`, 'success');
-                            setTimeout(shuffleNFT, 1000);
-                        }
-                    }
-                } else {
-                    showToast('Transaction failed', 'error');
-                }
-                
-            } catch (error) {
-                console.error('Minting error:', error);
-                if (error.code === 4001) {
-                    showToast('Transaction rejected by user', 'error');
-                } else {
-                    showToast('Minting failed: ' + error.message, 'error');
-                }
+                await updateStats();
+                document.getElementById('modalImg').src = current.image;
+                document.getElementById('modal').classList.add('active');
+                toast('NFT minted!');
+                shufflePreview();
+            } catch (e) {
+                console.error('Mint error:', e);
+                toast(e.message || 'Mint failed', 'error');
             } finally {
                 document.getElementById('mintBtn').disabled = false;
-                document.getElementById('mintBtn').innerHTML = '⚡ MINT NFT - 0.001 BNB';
+                document.getElementById('mintBtn').textContent = 'Mint NFT — Free';
             }
         }
 
-        function showToast(message, type = 'info') {
-            const toast = document.getElementById('toast');
-            const icons = { success: '✅', error: '❌', info: 'ℹ️' };
-            
-            document.getElementById('toastIcon').textContent = icons[type];
-            document.getElementById('toastMessage').textContent = message;
-            
-            toast.className = `toast ${type}`;
-            toast.classList.add('show');
-            
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        function showCelebrationModal(tokenId = null, design = null, tokenDetails = null) {
-            const modal = document.getElementById('celebrationModal');
-            const modalImage = document.getElementById('modalNFTImage');
-            
-            // Use provided design or fallback to current design
-            const displayDesign = design || currentDesign;
-            
-            if (displayDesign) {
-                modalImage.src = displayDesign.image;
-                modalImage.alt = displayDesign.name;
-            }
-            
-            // Update modal content with real NFT data
-            if (tokenId) {
-                const modalTitle = document.querySelector('#celebrationModal h2');
-                if (modalTitle) {
-                    modalTitle.textContent = `🎉 NFT #${tokenId} Minted Successfully!`;
-                }
-            }
-            
-            // Create confetti
-            createConfetti();
-            
-            // Show modal
-            modal.classList.add('active');
-            
-            // Auto close after 10 seconds
-            setTimeout(() => {
-                closeCelebrationModal();
-            }, 10000);
-        }
-
-        function closeCelebrationModal() {
-            const modal = document.getElementById('celebrationModal');
-            modal.classList.remove('active');
-            
-            // Clear confetti
-            const confettiElements = document.querySelectorAll('.confetti');
-            confettiElements.forEach(el => el.remove());
-        }
-
-        function viewOnElement() {
-            window.open('https://element.market/collections/4GIRL-3?search[toggles][0]=ALL', '_blank');
-        }
-
-        function createConfetti() {
-            const colors = ['#00D4FF', '#667eea', '#FF073A', '#00FF88', '#FFD700'];
-            
-            for (let i = 0; i < 50; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 3 + 's';
-                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-                
-                document.body.appendChild(confetti);
-                
-                // Remove confetti after animation
-                setTimeout(() => {
-                    if (confetti.parentNode) {
-                        confetti.parentNode.removeChild(confetti);
-                    }
-                }, 5000);
+        async function claimAll() {
+            if (!dividendContract || !account) return;
+            try {
+                document.getElementById('claimBtn').disabled = true;
+                document.getElementById('claimBtn').textContent = 'Claiming...';
+                await dividendContract.methods.claimAll().send({ from: account });
+                await refreshData();
+                toast('Dividends claimed!');
+            } catch (e) {
+                console.error('Claim error:', e);
+                toast(e.message, 'error');
+            } finally {
+                document.getElementById('claimBtn').disabled = false;
+                document.getElementById('claimBtn').textContent = 'Claim Dividends';
             }
         }
 
-        // Listen for account changes
-        if (window.ethereum) {
-            window.ethereum.on('accountsChanged', (accounts) => {
-                if (accounts.length === 0) {
-                    document.getElementById('connectWallet').innerHTML = '<span>🔗</span><span>Connect Wallet</span>';
-                    document.getElementById('mintBtn').disabled = true;
-                    userAccount = null;
-                } else if (userAccount !== accounts[0]) {
-                    userAccount = accounts[0];
-                    const shortAddress = userAccount.slice(0, 6) + '...' + userAccount.slice(-4);
-                    document.getElementById('connectWallet').innerHTML = `<span>✅</span><span>${shortAddress}</span>`;
-                }
-            });
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
         }
+
+        function viewCollection() {
+            window.open('https://element.market/collections/4IMG', '_blank');
+        }
+
+        function toast(msg, type = 'success') {
+            const t = document.getElementById('toast');
+            document.getElementById('toastIcon').textContent = type === 'success' ? '✓' : '✕';
+            document.getElementById('toastMsg').textContent = msg;
+            t.className = 'toast ' + type;
+            t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        window.onload = () => {
+            updatePreview(current);
+            if (window.ethereum) {
+                window.ethereum.request({ method: 'eth_accounts' }).then(a => {
+                    if (a.length) connectWallet();
+                });
+                window.ethereum.on('accountsChanged', a => {
+                    if (!a.length) location.reload();
+                    else connectWallet();
+                });
+            }
+            setInterval(refreshData, 10000);
+        };
     </script>
 </body>
 </html>
